@@ -1,3 +1,3 @@
 # mlcat
 
-*Machine Learning Models Catalogue Management*
+FastAPI based machine learning models api

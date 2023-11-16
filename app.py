@@ -2,7 +2,7 @@
 Application Module
 --------------------
 """
-from fastapi import FastAPI
+from fastapi import FastAPI, Depends
 from git import Repo
 
 from routers import v1
@@ -17,14 +17,12 @@ app = FastAPI(
     summary="This is a demo api template for Machine Learning Model.",
     version=__version__,
     docs_url="/docs",
-    redoc_url="/redocs"
+    redoc_url="/redocs",
 )
-app.include_router(router=v1.router)
-
 
 @app.get("/")
 def home():
     """Home Route"""
-    return {
-        "status" : "active"
-    }
+    return {"status": "active"}
+
+app.mount('/v1', v1.subapi)

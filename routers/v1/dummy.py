@@ -6,7 +6,12 @@ from fastapi import APIRouter
 from src.common import dummy
 from routers.v1.api_models import Dummy, DummyResponse
 
-router = APIRouter(prefix="/dummy", tags=["dummy endpoint"])
+router = APIRouter(prefix="/dummy")
+
+
+@router.get("/")
+def get_dummy() -> DummyResponse:
+    return {"response": "dummy"}
 
 
 @router.post("/")
